@@ -140,6 +140,7 @@ public class JournalHeader implements IJournalArea {
 		kontoArea.setLayout(gridLayout);
 
 		Hyperlink kontoHyperlink = tk.createHyperlink(kontoArea, "Kontostand:", SWT.NONE);
+    kontoHyperlink.setData("TEST_COMP_NAME", "KG_Iatrix_acount_balance_hl"); // for Jubula
 		kontoHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 			@Override
 			public void linkActivated(HyperlinkEvent e){
@@ -162,6 +163,7 @@ public class JournalHeader implements IJournalArea {
 
 		Hyperlink openBillsHyperlink =
 			tk.createHyperlink(kontoArea, "Rechnungsübersicht", SWT.NONE);
+    openBillsHyperlink.setData("TEST_COMP_NAME", "KG_Iatrix_account_overview_hl"); // for Jubula
 		openBillsHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 			@Override
 			public void linkActivated(HyperlinkEvent e){

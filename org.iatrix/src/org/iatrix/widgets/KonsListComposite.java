@@ -173,6 +173,7 @@ public class KonsListComposite {
 		availableRows.addAll(widgetRows);
 
 		if (konsultationen != null) {
+			int j = 0;
 			for (KonsData konsData : konsultationen) {
 				WidgetRow row;
 				if (availableRows.size() > 0) {
@@ -181,6 +182,9 @@ public class KonsListComposite {
 					row = new WidgetRow(composite);
 					widgetRows.add(row);
 				}
+				j += 1;
+				row.controls.get(0).setData("TEST_COMP_NAME", "KG_Iatrix_klc_row_"+j); // for Jubula
+
 				row.setKonsData(konsData);
 			}
 
