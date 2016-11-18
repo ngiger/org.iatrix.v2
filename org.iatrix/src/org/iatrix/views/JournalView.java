@@ -41,6 +41,7 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.iatrix.Iatrix;
 import org.iatrix.data.Problem;
+import org.iatrix.extdoc.util.Email;
 import org.iatrix.util.Constants;
 import org.iatrix.util.Heartbeat;
 import org.iatrix.util.Helpers;
@@ -74,7 +75,6 @@ import ch.elexis.data.Anwender;
 import ch.elexis.data.Fall;
 import ch.elexis.data.Konsultation;
 import ch.elexis.data.Patient;
-import ch.elexis.extdoc.util.Email;
 import ch.elexis.icpc.Episode;
 import ch.rgw.tools.TimeTool;
 import de.kupzog.ktable.KTable;
@@ -187,7 +187,7 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 		mainSash.setWeights(new int[] {
 			20, 40, 30
 		});
-		allAreas = new ArrayList<IJournalArea>();
+		allAreas = new ArrayList<>();
 		allAreas.add(formHeader);
 		allAreas.add(problemsArea);
 		allAreas.add(konsHeader);
@@ -333,6 +333,7 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 		@Override
 		public void catchElexisEvent(ElexisEvent ev){
 			UiDesk.asyncExec(new Runnable() {
+				@Override
 				public void run(){
 					Konsultation kons = (Konsultation) ev.getObject();
 					log.debug("catchElexisEvent " + ev.getType() + " kons " + kons);

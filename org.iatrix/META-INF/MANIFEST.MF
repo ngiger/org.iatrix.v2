@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Iatrix Erweiterungen zu Elexis
+Bundle-Name: Iatrix Erweiterungen zu Elexis v2
 Bundle-SymbolicName: org.iatrix.v2; singleton:=true
 Bundle-Version: 3.1.0.qualifier
 Bundle-Localization: plugin
@@ -18,7 +18,7 @@ Require-Bundle: org.slf4j.api,
  ch.elexis.core.ui;bundle-version="3.1.0",
  ch.rgw.utility,
  ch.elexis.icpc;bundle-version="3.1.0",
- ch.elexis.externe_dokumente.v2;bundle-version="3.1.0"
+ org.iatrix.extdoc.v2;bundle-version="3.1.0"
 Eclipse-LazyStart: true
 Bundle-Vendor: iatrix.org
 Bundle-ClassPath: .,icons/

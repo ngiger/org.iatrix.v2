@@ -1,4 +1,4 @@
-package ch.elexis.extdoc.util;
+package org.iatrix.extdoc.util;
 
 /**
  * Filter fuer die folgende Festlegung:

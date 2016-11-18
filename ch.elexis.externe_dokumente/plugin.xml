@@ -4,14 +4,14 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="ch.elexis.extdoc.views.ExterneDokumente"
+            class="org.iatrix.extdoc.views.ExterneDokumente"
             id="ch.elexis.views.ExterneDokumente"
             name="Externe Dokumente v2"/>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="ch.elexis.extdoc.preferences.ExterneDokumente"
+            class="org.iatrix.extdoc.preferences.ExterneDokumente"
             id="ch.elexis.externe_dokumente.v2.preferences"
             name="Externe Dokumente v2"/>
    </extension>

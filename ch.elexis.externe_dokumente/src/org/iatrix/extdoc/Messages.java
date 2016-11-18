@@ -1,9 +1,9 @@
-package ch.elexis.extdoc;
+package org.iatrix.extdoc;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "ch.elexis.extdoc.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.iatrix.extdoc.messages"; //$NON-NLS-1$
 	public static String ExterneDokumente_pop_menu;
 	public static String ExterneDokumente_delete_files;
 	public static String ExterneDokumente_click_to_sort_by_date;

@@ -10,7 +10,7 @@
  *    
  *******************************************************************************/
 
-package ch.elexis.extdoc.util;
+package org.iatrix.extdoc.util;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -18,11 +18,12 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.iatrix.extdoc.Messages;
+import org.iatrix.extdoc.dialogs.MoveIntoSubDirsDialog;
+import org.iatrix.extdoc.preferences.PreferenceConstants;
+
 import ch.elexis.data.Patient;
 import ch.elexis.data.Query;
-import ch.elexis.extdoc.Messages;
-import ch.elexis.extdoc.dialogs.MoveIntoSubDirsDialog;
-import ch.elexis.extdoc.preferences.PreferenceConstants;
 import ch.elexis.core.data.activator.CoreHub;
 import ch.elexis.core.ui.util.Log;
 

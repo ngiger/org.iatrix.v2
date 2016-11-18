@@ -12,7 +12,7 @@
  * 
  *******************************************************************************/
 
-package ch.elexis.extdoc.views;
+package org.iatrix.extdoc.views;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,6 +71,13 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.iatrix.extdoc.Messages;
+import org.iatrix.extdoc.dialogs.FileEditDialog;
+import org.iatrix.extdoc.dialogs.VerifierDialog;
+import org.iatrix.extdoc.preferences.PreferenceConstants;
+import org.iatrix.extdoc.util.Email;
+import org.iatrix.extdoc.util.ListFiles;
+import org.iatrix.extdoc.util.MatchPatientToPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,17 +96,10 @@ import ch.elexis.data.Konsultation;
 import ch.elexis.data.Mandant;
 import ch.elexis.data.Patient;
 import ch.elexis.data.PersistentObject;
-import ch.elexis.extdoc.Messages;
-import ch.elexis.extdoc.dialogs.FileEditDialog;
-import ch.elexis.extdoc.dialogs.VerifierDialog;
-import ch.elexis.extdoc.preferences.PreferenceConstants;
-import ch.elexis.extdoc.util.ListFiles;
-import ch.elexis.extdoc.util.MatchPatientToPath;
 import ch.elexis.core.text.model.Samdas;
 import ch.elexis.core.ui.util.SWTHelper;
 import ch.rgw.tools.ExHandler;
-import ch.rgw.tools.TimeTool;
-import ch.elexis.extdoc.util.Email;;
+import ch.rgw.tools.TimeTool;;
 
 /**
  * Diese Ansicht zeigt externe Dokumente an. Die Dokumente liegen in einem Verzeichnis im
@@ -544,7 +544,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager){
-				ch.elexis.extdoc.views.ExterneDokumente.this.fillContextMenu(manager);
+				org.iatrix.extdoc.views.ExterneDokumente.this.fillContextMenu(manager);
 			}
 		});
 		Menu menu = menuMgr.createContextMenu(viewer.getControl());
@@ -723,7 +723,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		verifyAction.setText(Messages.ExterneDokumente_verify_files);
 		verifyAction.setToolTipText(Messages.ExterneDokumente_verify_files_Belong_to_patient);
-		moveIntoSubDirsActions = new ch.elexis.extdoc.dialogs.MoveIntoSubDirsDialog();
+		moveIntoSubDirsActions = new org.iatrix.extdoc.dialogs.MoveIntoSubDirsDialog();
 		moveIntoSubDirsActions.setText(Messages.ExterneDokumente_move_into_subdir);
 		moveIntoSubDirsActions.setToolTipText(Messages.ExterneDokumente_move_into_subdir_tooltip);
 	}

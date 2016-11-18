@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="ch.elexis.externe_dokumente.v2.feature"
+      id="org.iatrix.extdoc.v2.feature"
       label="Einbindung eines beliebigen Dokumentenverzeichnisses v2"
       version="3.1.0.qualifier"
       provider-name="ch.elexis">
@@ -18,7 +18,7 @@
    </license>
 
   <plugin
-        id="ch.elexis.externe_dokumente.v2"
+        id="org.iatrix.extdoc.v2"
         download-size="0"
         install-size="0"
         version="3.1.0"

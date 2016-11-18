@@ -9,7 +9,7 @@
  *    Niklaus Giger - Initial implementation
  * 
  *******************************************************************************/
-package ch.elexis.extdoc.util;
+package org.iatrix.extdoc.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -24,6 +24,7 @@ import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.program.Program;
+import org.iatrix.extdoc.preferences.PreferenceConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +33,6 @@ import ch.elexis.core.data.activator.CoreHub;
 import ch.elexis.data.Fall;
 import ch.elexis.data.Konsultation;
 import ch.elexis.data.Patient;
-import ch.elexis.extdoc.preferences.PreferenceConstants;
 import ch.elexis.core.text.model.Samdas;
 import ch.rgw.tools.TimeTool;
 
@@ -137,7 +137,7 @@ public class Email {
 	 */
 	public static void openMailApplication(String to, String subject, String body,
 		List<File> attachments){
-		logger = LoggerFactory.getLogger("ch.elexis.extdoc");
+		logger = LoggerFactory.getLogger("org.iatrix.extdoc");
 		
 		if (subject == null)
 			subject = CoreHub.localCfg.get(PreferenceConstants.CONCERNS, "Überweisung");

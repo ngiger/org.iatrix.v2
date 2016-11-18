@@ -10,7 +10,7 @@
  *    Niklaus Giger - new layout with subdirectories
  *    
  *******************************************************************************/
-package ch.elexis.extdoc.preferences;
+package org.iatrix.extdoc.preferences;
 
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FileFieldEditor;
@@ -20,10 +20,10 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.iatrix.extdoc.Messages;
 
 import ch.elexis.core.data.activator.CoreHub;
 import ch.elexis.core.ui.preferences.SettingsPreferenceStore;
-import ch.elexis.extdoc.Messages;
 
 
 /**
