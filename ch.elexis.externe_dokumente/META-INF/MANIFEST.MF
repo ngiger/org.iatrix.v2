@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Externe Dokumente v2
-Bundle-SymbolicName: org.iatrix.extdoc.v2;singleton:=true
-Bundle-Version: 3.1.1.qualifier
+Bundle-SymbolicName: ch.elexis.extdoc.v2;singleton:=true
+Bundle-Version: 3.1.0.qualifier
 Bundle-Localization: plugin
 Require-Bundle: ch.elexis.core;bundle-version="3.1.0",
  ch.elexis.core.data;bundle-version="3.1.0",
@@ -13,7 +13,7 @@ Require-Bundle: ch.elexis.core;bundle-version="3.1.0",
  ch.rgw.utility
 Bundle-Vendor: iatrix.org
 Import-Package: org.slf4j
-Export-Package: org.iatrix.extdoc.util
+Export-Package: ch.elexis.extdoc.util
 Created-By: Buildr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

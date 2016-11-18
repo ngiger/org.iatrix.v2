@@ -1,4 +1,4 @@
-package org.iatrix.extdoc.util;
+package ch.elexis.extdoc.util;
 
 import java.io.File;
 import java.io.FilenameFilter;

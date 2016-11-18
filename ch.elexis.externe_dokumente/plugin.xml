@@ -5,20 +5,20 @@
          point="org.eclipse.ui.views">
       <view
             class="org.iatrix.extdoc.views.ExterneDokumente"
-            id="ch.elexis.views.ExterneDokumente"
+            id="org.iatrix.extdoc.views.ExterneDokumente"
             name="Externe Dokumente v2"/>
             name="Externe Dokumente1"/>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="ch.elexis.extdoc.commands.rename"
+            commandId="org.iatrix.extdoc.commands.rename"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F2">
       </key>
       <key
-            commandId="ch.elexis.extdoc.commands.edit_properties"
+            commandId="org.iatrix.extdoc.commands.edit_properties"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="ALT+ENTER">
@@ -27,17 +27,17 @@
     <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="ch.elexis.extdoc.commands.category"
-            id="ch.elexis.extdoc.commands.rename"
-            name="%ch.elexis.extdoc.cmd.rename">
+            categoryId="org.iatrix.extdoc.commands.category"
+            id="org.iatrix.extdoc.commands.rename"
+            name="%org.iatrix.extdoc.cmd.rename">
       </command>
       <command
-            categoryId="ch.elexis.extdoc.commands.category"
-            id="ch.elexis.extdoc.commands.edit_properties"
+            categoryId="org.iatrix.extdoc.commands.category"
+            id="org.iatrix.extdoc.commands.edit_properties"
             name="%extdoc.commands.properties_cmd">
       </command>
       <category
-            id="ch.elexis.extdoc.commands.category"
+            id="org.iatrix.extdoc.commands.category"
             name="%extdoc.commands.category">
       </category>
    </extension>
@@ -45,7 +45,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="org.iatrix.extdoc.preferences.ExterneDokumente"
-            id="ch.elexis.externe_dokumente.v2.preferences"
+            id="org.iatrix.extdoc.v2.preferences"
             name="Externe Dokumente v2"/>
    </extension>
 

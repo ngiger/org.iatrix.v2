@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.iatrix.extdoc.v2.feature_3.1.0.qualifier.jar" id="org.iatrix.extdoc.v2.feature" version="3.1.0.qualifier">
+   <feature url="features/ch.elexis.extdoc.v2feature_3.1.0.qualifier.jar" id="ch.elexis.extdoc.v2.feature" version="3.1.0.qualifier">
       <category name="documentmanagement"/>
    </feature>
    <feature url="features/org.iatrix.v2.feature_3.1.0.qualifier.jar" id="org.iatrix.v2.feature" version="3.1.0.qualifier">

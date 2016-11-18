@@ -11,7 +11,7 @@
  *    
  *******************************************************************************/
 
-package org.iatrix.extdoc.dialogs;
+package ch.elexis.extdoc.dialogs;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -33,9 +33,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-import org.iatrix.extdoc.Messages;
-import org.iatrix.extdoc.preferences.PreferenceConstants;
-import org.iatrix.extdoc.util.*;
 
 import ch.elexis.core.ui.UiDesk;
 import ch.elexis.core.data.activator.CoreHub;
@@ -44,8 +41,13 @@ import ch.elexis.core.ui.actions.JobPool;
 import ch.elexis.core.ui.actions.BackgroundJob.BackgroundJobListener;
 import ch.elexis.core.ui.icons.Images;
 import ch.elexis.data.Patient;
+import ch.elexis.extdoc.Messages;
+import ch.elexis.extdoc.preferences.PreferenceConstants;
+import ch.elexis.extdoc.util.ListFiles;
+import ch.elexis.extdoc.util.MatchPatientToPath;
 import ch.elexis.core.ui.util.SWTHelper;
 import ch.rgw.tools.StringTool;
+import ch.elexis.extdoc.util.*;
 
 public class VerifierDialog extends TitleAreaDialog {
 	private Patient actPatient;

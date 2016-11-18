@@ -11,7 +11,7 @@
  *    
  *******************************************************************************/
 
-package org.iatrix.extdoc.dialogs;
+package ch.elexis.extdoc.dialogs;
 
 import java.io.File;
 import java.util.Calendar;
@@ -25,14 +25,14 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
-import org.iatrix.extdoc.Messages;
-import org.iatrix.extdoc.util.*;
 
 import ch.elexis.core.ui.UiDesk;
 import ch.elexis.core.ui.icons.Images;
 import ch.elexis.core.ui.util.SWTHelper;
 import ch.rgw.tools.StringTool;
 import ch.rgw.tools.TimeTool;
+import ch.elexis.extdoc.Messages;
+import ch.elexis.extdoc.util.*;
 
 import com.tiff.common.ui.datepicker.DatePickerCombo;
 

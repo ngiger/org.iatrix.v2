@@ -5,6 +5,6 @@
     <artifactId>iatrix-base</artifactId>
     <version>3.1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>org.iatrix.extdoc.v2</artifactId>
+  <artifactId>ch.elexis.extdoc.v2</artifactId>
   <packaging>eclipse-plugin</packaging>
  </project>

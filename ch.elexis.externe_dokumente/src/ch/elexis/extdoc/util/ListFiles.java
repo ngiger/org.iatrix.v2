@@ -1,14 +1,14 @@
-package org.iatrix.extdoc.util;
+package ch.elexis.extdoc.util;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.iatrix.extdoc.Messages;
-import org.iatrix.extdoc.preferences.PreferenceConstants;
-
 import ch.elexis.data.Patient;
+import ch.elexis.extdoc.Messages;
+import ch.elexis.extdoc.preferences.PreferenceConstants;
+
 import ch.rgw.tools.StringTool;
 
 public class ListFiles {

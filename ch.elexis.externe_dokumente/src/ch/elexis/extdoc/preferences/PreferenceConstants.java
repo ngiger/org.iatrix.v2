@@ -11,7 +11,7 @@
  *    
  *******************************************************************************/
 
-package org.iatrix.extdoc.preferences;
+package ch.elexis.extdoc.preferences;
 
 import ch.elexis.core.data.activator.CoreHub;
 
