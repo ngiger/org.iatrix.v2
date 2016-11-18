@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Externe Dokumente v2
 Bundle-SymbolicName: org.iatrix.extdoc.v2;singleton:=true
-Bundle-Version: 3.1.0.qualifier
+Bundle-Version: 3.1.1.qualifier
 Bundle-Localization: plugin
 Require-Bundle: ch.elexis.core;bundle-version="3.1.0",
  ch.elexis.core.data;bundle-version="3.1.0",

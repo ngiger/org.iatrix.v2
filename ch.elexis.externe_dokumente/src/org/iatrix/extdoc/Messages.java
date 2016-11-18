@@ -45,7 +45,6 @@ public class Messages extends NLS {
 	public static String MoveIntoSubDirsDialog_finished;
 	public static String MoveIntoSubDirsDialog_no_old_Files_found;
 	public static String MoveIntoSubDirsDialog_sub_task;
-	public static String VerifierDialog_empty;
 	public static String VerifierDialog_name;
 	public static String VerifierDialog_verify_job_name;
 	public static String FileEditDialog_attribute_to_new_patient;
@@ -56,11 +55,11 @@ public class Messages extends NLS {
 	public static String FileEditDialog_really_attribute_to_new_patient;
 	public static String FileEditDialog_17;
 	public static String FileEditDialog_18;
-	
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}
-	
+
 	private Messages(){}
 }
