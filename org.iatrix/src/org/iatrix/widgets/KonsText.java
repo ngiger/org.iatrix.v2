@@ -93,7 +93,6 @@ public class KonsText implements IJournalArea {
 		Composite konsultationTextComposite = tk.createComposite(konsultationSash);
 		konsultationTextComposite.setLayout(new GridLayout(1, true));
 		text = new EnhancedTextField(konsultationTextComposite);
-		text.setData("TEST_COMP_NAME", "KG_Iatrix_KonsText_txt"); // for Jubula
 		hXrefs = new Hashtable<String, IKonsExtension>();
 		@SuppressWarnings("unchecked")
 		List<IKonsExtension> listKonsextensions = Extensions.getClasses(
@@ -151,14 +150,12 @@ public class KonsText implements IJournalArea {
 		tk.adapt(text);
 
 		lVersion = tk.createLabel(konsultationTextComposite, "<aktuell>");
-		lVersion.setData("TEST_COMP_NAME", "KG_Iatrix_version_lbl"); // for Jubula
 		lVersion.setLayoutData(SWTHelper.getFillGridData(1, true, 1, false));
 
 		lKonsLock = tk.createLabel(konsultationTextComposite, "");
 		lKonsLock.setLayoutData(SWTHelper.getFillGridData(1, true, 1, false));
 		lKonsLock.setForeground(lKonsLock.getDisplay().getSystemColor(SWT.COLOR_RED));
 		lKonsLock.setVisible(false);
-		lVersion.setData("TEST_COMP_NAME", "KG_Iatrix_konsLock_lbl"); // for Jubula
 		registerUpdateHeartbeat();
 	}
 
