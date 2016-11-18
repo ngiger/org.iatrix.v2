@@ -79,6 +79,7 @@ import ch.elexis.core.ui.actions.GlobalEventDispatcher;
 import ch.elexis.core.ui.actions.IActivationListener;
 import ch.elexis.core.ui.actions.JobPool;
 import ch.elexis.core.ui.events.ElexisUiEventListenerImpl;
+import ch.elexis.core.ui.icons.Images;
 import ch.elexis.core.ui.util.SWTHelper;
 import ch.elexis.data.Mandant;
 import ch.elexis.data.Patient;
@@ -604,8 +605,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 			}
 		};
 		sendMailAction.setText(Messages.ExterneDokumente_sendEmail);
-		sendMailAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("ch.elexis",
-				"rsc/mail.png"));
+		sendMailAction.setImageDescriptor(Images.IMG_MAIL.getImageDescriptor());
 		sendMailAction.setToolTipText(Messages.ExterneDokumente_sendEmailTip);
 		openFolderAction = new Action() {
 			public void run(){
@@ -644,8 +644,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		openAction.setText(Messages.ExterneDokumente_open);
 		openAction.setToolTipText(Messages.ExterneDokumente_OpenFileTip);
-		openAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("ch.elexis",
-				"rsc/open.gif"));
+		openAction.setImageDescriptor(Images.IMG_DOCUMENT_TEXT.getImageDescriptor());
 		doubleClickAction = new Action() {
 			public void run(){
 				openAction.run();
@@ -666,8 +665,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		editAction.setText(Messages.ExterneDokumente_propeties);
 		editAction.setToolTipText(Messages.ExterneDokumente_rename_or_change_date);
 		editAction.setActionDefinitionId(GlobalActions.PROPERTIES_COMMAND);
-		editAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("ch.elexis",
-				"rsc/plaf/modern/icons/edit.png"));
+		editAction.setImageDescriptor(Images.IMG_EDIT.getImageDescriptor());
 		GlobalActions.registerActionHandler(this, editAction);
 		
 		deleteAction = new Action() {
