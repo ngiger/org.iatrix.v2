@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.iatrix.messwerte.feature"
-      label="Messwerte Iatrix, Parameter und med. Checklisten"
-      version="3.0.0.qualifier"
+      id="org.iatrix.messwerte.v2.feature"
+      label="Messwerte Iatrix, Parameter und med. Checklisten v2"
+      version="3.1.0.qualifier"
       provider-name="org.iatrix">
 
    <description>
@@ -19,10 +19,10 @@
    </license>
 
    <plugin
-         id="org.iatrix.messwerte"
+         id="org.iatrix.messwerte.v2"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="3.1.0"
          unpack="false"/>
 
 </feature>

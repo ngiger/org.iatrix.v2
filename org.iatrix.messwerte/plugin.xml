@@ -10,7 +10,7 @@
             class="org.iatrix.messwerte.views.MesswerteView"
             icon="rsc/reagenzglas.ico"
             id="org.iatrix.messwerte.views.MesswerteView"
-            name="Messwerte Iatrix">
+            name="Messwerte Iatrix v2">
       </view>
    </extension>
    <extension
@@ -19,13 +19,13 @@
             category="org.iatrix.preferences.IatrixPreferences"
             class="org.iatrix.messwerte.preferences.MesswertePreferences"
             id="org.iatrix.messwerte.preferences.MesswertePreferences"
-            name="Messwerte Iatrix">
+            name="Messwerte Iatrix v2">
       </page>
       <page
             category="org.iatrix.preferences.IatrixPreferences"
             class="org.iatrix.messwerte.preferences.LabGroupPrefs"
             id="org.iatrix.messwerte.preferences.LabGroupPrefs"
-            name="Laborgruppen (Laborblätter)">
+            name="Laborgruppen (Laborblätter) v2">
       </page>
    </extension>
    <extension

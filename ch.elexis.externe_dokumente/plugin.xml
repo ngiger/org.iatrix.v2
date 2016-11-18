@@ -6,14 +6,14 @@
       <view
             class="ch.elexis.extdoc.views.ExterneDokumente"
             id="ch.elexis.views.ExterneDokumente"
-            name="Externe Dokumente"/>
+            name="Externe Dokumente v2"/>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
             class="ch.elexis.extdoc.preferences.ExterneDokumente"
-            id="ch.elexis.externe_dokumente.preferences"
-            name="Externe Dokumente"/>
+            id="ch.elexis.externe_dokumente.v2.preferences"
+            name="Externe Dokumente v2"/>
    </extension>
 
 </plugin>

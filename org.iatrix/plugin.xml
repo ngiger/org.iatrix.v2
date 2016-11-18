@@ -9,7 +9,7 @@
             class="org.iatrix.views.JournalView"
             fastViewWidthRatio="0.2"
             id="org.iatrix.views.JournalView"
-            name="KG Iatrix"/>
+            name="KG Iatrix v2"/>
       <category
             id="org.iatrix"
             name="Iatrix"/>
@@ -17,12 +17,12 @@
             category="org.iatrix"
             class="org.iatrix.views.ProblemView"
             id="org.iatrix.views.ProblemView"
-            name="Problem"/>
+            name="Problem v2"/>
       <view
             category="org.iatrix"
             class="org.iatrix.views.KonsListView"
             id="org.iatrix.views.KonsListView"
-            name="Konsultationen Iatrix">
+            name="Konsultationen Iatrix v2">
       </view>
       <view
             allowMultiple="true"
