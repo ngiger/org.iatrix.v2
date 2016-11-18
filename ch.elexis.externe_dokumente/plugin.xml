@@ -4,21 +4,21 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="org.iatrix.extdoc.views.ExterneDokumente"
-            id="org.iatrix.extdoc.views.ExterneDokumente"
+            class="ch.elexis.extdoc.views.ExterneDokumente"
+            id="ch.elexis.extdoc.views.ExterneDokumente"
             name="Externe Dokumente v2"/>
             name="Externe Dokumente1"/>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="org.iatrix.extdoc.commands.rename"
+            commandId="ch.elexis.extdoc.commands.rename"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F2">
       </key>
       <key
-            commandId="org.iatrix.extdoc.commands.edit_properties"
+            commandId="ch.elexis.extdoc.commands.edit_properties"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="ALT+ENTER">
@@ -27,25 +27,25 @@
     <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="org.iatrix.extdoc.commands.category"
-            id="org.iatrix.extdoc.commands.rename"
-            name="%org.iatrix.extdoc.cmd.rename">
+            categoryId="ch.elexis.extdoc.commands.category"
+            id="ch.elexis.extdoc.commands.rename"
+            name="%ch.elexis.extdoc.cmd.rename">
       </command>
       <command
-            categoryId="org.iatrix.extdoc.commands.category"
-            id="org.iatrix.extdoc.commands.edit_properties"
+            categoryId="ch.elexis.extdoc.commands.category"
+            id="ch.elexis.extdoc.commands.edit_properties"
             name="%extdoc.commands.properties_cmd">
       </command>
       <category
-            id="org.iatrix.extdoc.commands.category"
+            id="ch.elexis.extdoc.commands.category"
             name="%extdoc.commands.category">
       </category>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="org.iatrix.extdoc.preferences.ExterneDokumente"
-            id="org.iatrix.extdoc.v2.preferences"
+            class="ch.elexis.extdoc.preferences.ExterneDokumente"
+            id="ch.elexis.extdoc.v2.preferences"
             name="Externe Dokumente v2"/>
    </extension>
 

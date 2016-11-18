@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -121,8 +122,8 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 	private Action sendMailAction;
 	private Action openFolderAction;
 	private Action openAction;
-	private Action editAction;
-	private Action renameAction;
+	private IAction editAction;
+	private IAction renameAction;
 	private Action moveIntoSubDirsActions;
 	private Action deleteAction;
 	private Action verifyAction;
@@ -664,7 +665,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		editAction.setText(Messages.ExterneDokumente_propeties);
 		editAction.setToolTipText(Messages.ExterneDokumente_rename_or_change_date);
-		editAction.setActionDefinitionId(GlobalActions.PROPERTIES_COMMAND);
+		editAction.setActionDefinitionId("ch.elexis.extdoc.commands.edit_properties");
 		editAction.setImageDescriptor(Images.IMG_EDIT.getImageDescriptor());
 		GlobalActions.registerActionHandler(this, editAction);
 		
@@ -704,7 +705,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		renameAction.setText(Messages.ExterneDokumente_renaming_file);
 		renameAction.setToolTipText(Messages.ExterneDokumente_renaming_file);
-		renameAction.setActionDefinitionId(GlobalActions.RENAME_COMMAND);
+		renameAction.setActionDefinitionId("ch.elexis.extdoc.commands.rename");
 		GlobalActions.registerActionHandler(this, renameAction);
 		
 		verifyAction = new Action() {
