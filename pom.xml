@@ -68,14 +68,15 @@
 	</profiles>
 <modules>
   <!-- our test modules. Come first to make them run as soon as possible -->
+  <module>org.iatrix.help.wiki</module>
+  <module>org.iatrix.help.wiki.feature</module>
+  <module>org.iatrix.p2site</module>
   <module>ch.elexis.externe_dokumente</module>
   <module>org.iatrix.messwerte</module>
   <module>org.iatrix</module>
-
   <module>org.iatrix.messwerte.feature</module>
   <module>ch.elexis.externe_dokumente.feature</module>
   <module>org.iatrix.feature</module>
-  <module>org.iatrix.p2site</module>
   <!--
   -->
   <!--module>org.iatrix.p2site</module-->
