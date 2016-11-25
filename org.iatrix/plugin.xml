@@ -2,13 +2,28 @@
 <?eclipse version="3.0"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.iatrix.perspective.KgIatrixPerspective"
+            fixed="false"
+            icon="icons/iatrix.ico"
+            id="org.iatrix.v2..perspective.KgIatrixPerspective"
+            name="%iatrix.perspective"/>
+   </extension>
+   <extension
+         point="ch.elexis.core.ui.Sidebar">
+      <Perspektive
+            id="org.iatrix.v2..perspective.KgIatrixPerspective"
+            name="%iatrix.perspective"/>
+   </extension>
+   <extension
          point="org.eclipse.ui.views">
       <view
             allowMultiple="true"
             category="org.iatrix"
             class="org.iatrix.views.JournalView"
             fastViewWidthRatio="0.2"
-            id="org.iatrix.views.JournalView"
+            id="org.iatrix.v2.views.JournalView"
             name="KG Iatrix v2"/>
       <category
             id="org.iatrix"
@@ -16,12 +31,12 @@
       <view
             category="org.iatrix"
             class="org.iatrix.views.ProblemView"
-            id="org.iatrix.views.ProblemView"
+            id="org.iatrix.v2.views.ProblemView"
             name="Problem v2"/>
       <view
             category="org.iatrix"
             class="org.iatrix.views.KonsListView"
-            id="org.iatrix.views.KonsListView"
+            id="org.iatrix.v2.views.KonsListView"
             name="Konsultationen Iatrix v2">
       </view>
       <view
@@ -29,7 +44,7 @@
             category="org.iatrix"
             class="org.iatrix.views.WebBrowserView"
             icon="icons/applications-internet.png"
-            id="org.iatrix.views.WebBrowserView"
+            id="org.iatrix.v2.views.WebBrowserView"
             name="%iatrix.WebBrowserView">
       </view>
    </extension>
@@ -42,12 +57,12 @@
    <extension
          point="org.eclipse.ui.contexts">
       <context
-            id="org.iatrix.view.context"
+            id="org.iatrix.v2.view.context"
             name="%iatrix.view.context.name"
             parentId="org.eclipse.ui.contexts.window">
       </context>
       <context
-            id="org.iatrix.view.konslist.context"
+            id="org.iatrix.v2.view.konslist.context"
             name="%iatrix.view.konslist.context.name"
             parentId="org.eclipse.ui.contexts.window">
       </context>
@@ -55,44 +70,44 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="org.iatrix.commands.newcons"
-            contextId="org.iatrix.view.context"
+            commandid="org.iatrix.v2.commands.newcons"
+            contextid="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+K">
       </key>
       <key
-            commandId="org.iatrix.commands.export_clipboard"
-            contextId="org.iatrix.view.context"
+            commandid="org.iatrix.v2.commands.export_clipboard"
+            contextid="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+E">
       </key>
       <key
-            commandId="org.iatrix.commands.newproblem"
-            contextId="org.iatrix.view.context"
+            commandid="org.iatrix.v2.commands.newproblem"
+            contextid="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+P">
       </key>
       <key
-            commandId="org.iatrix.commands.show_all_charges"
-            contextId="org.iatrix.view.context"
+            commandid="org.iatrix.v2.commands.show_all_charges"
+            contextid="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F6">
       </key>
       <key
-            commandId="org.iatrix.commands.show_all_charges"
-            contextId="org.iatrix.view.konslist.context"
+            commandid="org.iatrix.v2.commands.show_all_charges"
+            contextid="org.iatrix.v2.view.konslist.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F6">
       </key>
       <key
-            commandId="org.iatrix.commands.show_all_consultations"
-            contextId="org.iatrix.view.context"
+            commandid="org.iatrix.v2.commands.show_all_consultations"
+            contextid="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F5">
       </key>
       <key
-            commandId="org.iatrix.commands.show_all_consultations"
-            contextId="org.iatrix.view.konslist.context"
+            commandid="org.iatrix.v2.commands.show_all_consultations"
+            contextid="org.iatrix.v2.view.konslist.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F5">
       </key>
@@ -100,37 +115,37 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.newcons"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.newcons"
             name="%iatrix.commands.newcons">
       </command>
       <category
-            id="org.iatrix.commands.category"
+            id="org.iatrix.v2.commands.category"
             name="%iatrix.commands.category">
       </category>
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.export_clipboard"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.export_clipboard"
             name="%iatrix.commands.export_clipboard">
       </command>
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.newproblem"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.newproblem"
             name="%iatrix.commands.newproblem">
       </command>
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.show_all_charges"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.show_all_charges"
             name="%iatrix.commands.show_all_charges">
       </command>
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.show_all_consultations"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.show_all_consultations"
             name="%iatrix.commands.show_all_consultations">
       </command>
       <command
-            categoryId="org.iatrix.commands.category"
-            id="org.iatrix.commands.send_email"
+            categoryid="org.iatrix.v2.commands.category"
+            id="org.iatrix.v2.commands.send_email"
             name="%iatrix.commands.send_email">
       </command>
    </extension>
@@ -138,13 +153,13 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="org.iatrix.preferences.IatrixPreferences"
-            id="org.iatrix.preferences.IatrixPreferences"
+            id="org.iatrix.v2.preferences.IatrixPreferences"
             name="Iatrix">
       </page>
       <page
             category="org.iatrix.preferences.IatrixPreferences"
             class="org.iatrix.preferences.KGIatrixPreferences"
-            id="org.iatrix.preferences.KGIatrixPreferences"
+            id="org.iatrix.v2.preferences.KGIatrixPreferences"
             name="KG">
       </page>
    </extension>

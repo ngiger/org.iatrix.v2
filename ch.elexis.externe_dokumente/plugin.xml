@@ -5,7 +5,7 @@
          point="org.eclipse.ui.views">
       <view
             class="ch.elexis.extdoc.views.ExterneDokumente"
-            id="ch.elexis.extdoc.views.ExterneDokumente"
+            id="ch.elexis.extdoc.v2.views.ExterneDokumente"
             name="Externe Dokumente v2"/>
             name="Externe Dokumente1"/>
    </extension>

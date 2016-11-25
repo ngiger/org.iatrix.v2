@@ -9,7 +9,7 @@
             category="ch.elexis.messungenKategorie"
             class="org.iatrix.messwerte.views.MesswerteView"
             icon="rsc/reagenzglas.ico"
-            id="org.iatrix.messwerte.views.MesswerteView"
+            id="org.iatrix.messwerte.v2.views.MesswerteView"
             name="Messwerte Iatrix v2">
       </view>
    </extension>

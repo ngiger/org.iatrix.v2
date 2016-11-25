@@ -11,30 +11,31 @@ import ch.elexis.core.data.activator.CoreHub;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
-	
+
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.iatrix.messwerte";
-	
+	public static final String PLUGIN_ID = "org.iatrix.messwerte.v2";
+
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
 	public Activator(){}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception{
 		super.start(context);
 		plugin = this;
-		
+
 		initACL();
 	}
-	
+
 	/**
 	 * Initialize ACLs for the first time, if not yet done.
 	 */
@@ -46,31 +47,32 @@ public class Activator extends AbstractUIPlugin {
 			// make sure configuration is written, so that initalization is not repeated
 			CoreHub.globalCfg.flush();
 		}
-		
+
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception{
 		plugin = null;
 		super.stop(context);
 	}
-	
+
 	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault(){
 		return plugin;
 	}
-	
+
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in relative path
-	 * 
+	 *
 	 * @param path
 	 *            the path
 	 * @return the image descriptor

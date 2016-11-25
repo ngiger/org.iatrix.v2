@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     D. Lutz - initial API and implementation
- * 
+ *
  * Sponsors:
  *     Dr. Peter Schönbucher, Luzern
  ******************************************************************************/
@@ -28,15 +28,15 @@ import ch.elexis.core.ui.preferences.SettingsPreferenceStore;
  */
 public class KGIatrixPreferences extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {
-	
+
 	public static final String ID = "org.iatrix.preferences.KGIatrixPreferences";
-	
+
 	public KGIatrixPreferences(){
 		super(GRID);
 		setPreferenceStore(new SettingsPreferenceStore(CoreHub.userCfg));
-		setDescription("Einstellungen für KG Iatrix");
+		setDescription("Einstellungen für KG Iatrix v2");
 	}
-	
+
 	@Override
 	protected void createFieldEditors(){
 		addField(new StringFieldEditor(Iatrix.CFG_AUTO_SAVE_PERIOD,
@@ -50,12 +50,13 @@ public class KGIatrixPreferences extends FieldEditorPreferencePage implements
 		addField(new BooleanFieldEditor(Iatrix.CFG_USE_KONSTEXT_TRACE,
 			"Aufzeichnen der Sperren (nur für Fehlersuche)", getFieldEditorParent()));
 	}
-	
+
+	@Override
 	public void init(final IWorkbench workbench){
 		// initialize values if needed
-		
+
 		String value;
-		
+
 		value = CoreHub.userCfg.get(Iatrix.CFG_AUTO_SAVE_PERIOD, null);
 		if (value == null) {
 			CoreHub.userCfg.set(Iatrix.CFG_AUTO_SAVE_PERIOD, Iatrix.CFG_AUTO_SAVE_PERIOD_DEFAULT);
@@ -76,7 +77,7 @@ public class KGIatrixPreferences extends FieldEditorPreferencePage implements
 				Iatrix.CFG_USE_KONSTEXT_TRACE_DEFAULT);
 		}
 	}
-	
+
 	@Override
 	public boolean performOk(){
 		if (super.performOk()) {
@@ -85,5 +86,5 @@ public class KGIatrixPreferences extends FieldEditorPreferencePage implements
 		}
 		return false;
 	}
-	
+
 }

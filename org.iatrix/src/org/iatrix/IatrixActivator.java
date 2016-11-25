@@ -27,7 +27,7 @@ public class IatrixActivator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.iatrix";
+	public static final String PLUGIN_ID = "org.iatrix.v2";
 
 	/**
 	 * The shared instance

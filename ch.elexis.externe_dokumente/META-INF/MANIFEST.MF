@@ -13,7 +13,8 @@ Require-Bundle: ch.elexis.core;bundle-version="3.1.0",
  ch.rgw.utility
 Bundle-Vendor: iatrix.org
 Import-Package: org.slf4j
-Export-Package: ch.elexis.extdoc.util
+Export-Package: ch.elexis.extdoc.util,
+ ch.elexis.extdoc.views
 Created-By: Buildr
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 

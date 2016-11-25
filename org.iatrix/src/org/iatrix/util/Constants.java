@@ -15,6 +15,8 @@
  ******************************************************************************/
 package org.iatrix.util;
 
+import org.iatrix.IatrixActivator;
+
 public class Constants {
 
 	// column indices
@@ -67,12 +69,12 @@ public class Constants {
 
 			CFG_BASE_KEY + "/" + "status", // STATUS
 	};
-	public static final String ID = "org.iatrix.views.JournalView"; //$NON-NLS-1$
-	public static final String VIEW_CONTEXT_ID = "org.iatrix.view.context"; //$NON-NLS-1$
-	public static final String NEWCONS_COMMAND = "org.iatrix.commands.newcons"; //$NON-NLS-1$
-	public static final String NEWPROBLEM_COMMAND = "org.iatrix.commands.newproblem"; //$NON-NLS-1$
-	public static final String EXPORT_CLIPBOARD_COMMAND = "org.iatrix.commands.export_clipboard"; //$NON-NLS-1$
-	public static final String EXPORT_SEND_EMAIL_COMMAND = "org.iatrix.commands.send_email"; //$NON-NLS-1$
+	public static final String ID =IatrixActivator.PLUGIN_ID + ".views.JournalView"; //$NON-NLS-1$
+	public static final String VIEW_CONTEXT_ID =IatrixActivator.PLUGIN_ID + ".view.context"; //$NON-NLS-1$
+	public static final String NEWCONS_COMMAND =IatrixActivator.PLUGIN_ID + ".commands.newcons"; //$NON-NLS-1$
+	public static final String NEWPROBLEM_COMMAND =IatrixActivator.PLUGIN_ID + ".commands.newproblem"; //$NON-NLS-1$
+	public static final String EXPORT_CLIPBOARD_COMMAND =IatrixActivator.PLUGIN_ID + ".commands.export_clipboard"; //$NON-NLS-1$
+	public static final String EXPORT_SEND_EMAIL_COMMAND =IatrixActivator.PLUGIN_ID + ".commands.send_email"; //$NON-NLS-1$
 	public static final String UNKNOWN = "(unbekannt)";
 	public static final DateComparator DATE_COMPARATOR = new DateComparator();
 }
