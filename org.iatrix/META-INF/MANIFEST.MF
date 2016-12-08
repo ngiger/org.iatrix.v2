@@ -19,7 +19,12 @@ Require-Bundle: org.slf4j.api,
  ch.rgw.utility,
  ch.elexis.icpc;bundle-version="3.1.0",
  ch.elexis.extdoc.v2;bundle-version="3.1.0",
- org.iatrix.messwerte.v2
+ org.iatrix.messwerte.v2,
+ ch.elexis.core.ui.medication,
+ org.iatrix.help.wiki,
+ ch.elexis.agenda,
+ ch.elexis.base.ch.ebanking,
+ ch.elexis.core.ui.laboratory
 Eclipse-LazyStart: true
 Bundle-Vendor: iatrix.org
 Bundle-ClassPath: .,

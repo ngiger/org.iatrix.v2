@@ -13,7 +13,7 @@
    <extension
          point="ch.elexis.core.ui.Sidebar">
       <Perspektive
-            id="org.iatrix.v2..perspective.KgIatrixPerspective"
+            ID="org.iatrix.v2..perspective.KgIatrixPerspective"
             name="%iatrix.perspective"/>
    </extension>
    <extension
