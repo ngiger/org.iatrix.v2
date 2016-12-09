@@ -150,7 +150,12 @@ public class KonsHeader implements IJournalArea {
 		{
 			return;
 		}
-		log.debug("setKons " + k);
+		if (k != null)
+		{
+			log.debug("setKons set actKons to " + k.getId() + " vom " + k.getDatum() + " was " + (actKons != null ? actKons.getId() : "null"));
+		} else {
+			log.debug("setKons set actKons null");
+		}
 		actKons = k;
 		if (actKons != null) {
 			cbFall.setEnabled(true);
@@ -160,7 +165,7 @@ public class KonsHeader implements IJournalArea {
 				hlKonsultationDatum.setDate(new TimeTool(sb.toString()).getTime());
 				hlKonsultationDatum.setEnabled(true);
 			} else {
-				hlKonsultationDatum.setEnabled(false);	
+				hlKonsultationDatum.setEnabled(false);
 			}
 			Mandant m = actKons.getMandant();
 			sb = new StringBuilder();
@@ -189,7 +194,7 @@ public class KonsHeader implements IJournalArea {
 
 			reloadFaelle(actKons);
 
-			log.debug("setKons " +  actKons.getId() + " Rechnungssteller " + sb + " enabled? " + enabled);
+			log.debug("setKons actKons now " +  actKons.getId() + " Rechnungssteller " + sb + " enabled? " + enabled);
 		} else {
 			cbFall.setEnabled(false);
 

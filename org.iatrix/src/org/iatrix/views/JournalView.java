@@ -268,15 +268,15 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 		// It is a bad idea to skip updating the kons, when the Id matches
 		// Some changes, e.g. when date of actual kons are possible even when the compare matches.
 		// Therefore we return only when we have nothing to update savedKonst == newKons?" + newId + " konsId match? " + savedKonsId.equals(newId));
-		savedKonsId = newId;
-		logEvent("updateAllKonsAreas: " + newId + " konsId match? " + savedKonsId.equals(newId)
-			+ " newKons " + newKons);
+		logEvent("updateAllKonsAreas: newId " + newId + " konsId match? " + savedKonsId.equals(newId)
+			+ " savedKonsId" + savedKonsId);
 		for (int i = 0; i < allAreas.size(); i++) {
 			IJournalArea a = allAreas.get(i);
 			if (a != null) {
 				a.setKons(newKons, op);
 			}
 		}
+		savedKonsId = newId;
 	}
 
 	private void activateAllKonsAreas(boolean mode){
