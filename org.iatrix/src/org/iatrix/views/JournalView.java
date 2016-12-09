@@ -450,120 +450,134 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 				updateAllKonsAreas(newKons, KonsActions.ACTIVATE_KONS);
 			}
 		};
+		/**
+		 * Helper to update every thing whether we got notified by opening the view
+		 * or the selected patient changed
+		 * @param patient
+		 * @param why Where do we come from
+		 */
+		private void displaySelectedPatient(Patient selectedPatient, String why) {
+			boolean patient_already_active =
+				actPatient != null && selectedPatient != null &&
+				selectedPatient.getId().equals(actPatient.getId());
+			if (selectedPatient == null) {
+				logEvent("displaySelectedPatient " + why + " no patient");
+			} else {
+				logEvent("displaySelectedPatient " + why + " " + selectedPatient.getId()
+				+ " patient_already_active " + patient_already_active
+				+ selectedPatient.getPersonalia());
+			}
+
+			showAllChargesAction.setChecked(false);
+			showAllConsultationsAction.setChecked(false);
+			if (!patient_already_active) {
+				setPatient(selectedPatient);
+				updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
+				if (selectedPatient == null) { return; }
+			}
+
+			Patient patient = null;
+			Fall fall = null;
+			Konsultation konsultation = null;
+
+			konsultation =
+				(Konsultation) ElexisEventDispatcher.getSelected(Konsultation.class);
+			if (konsultation != null) {
+				// diese Konsulation setzen, falls sie zum ausgewaehlten Patienten gehoert
+				fall = konsultation.getFall();
+				patient = fall.getPatient();
+				logEvent("displaySelectedPatient kons " + konsultation.getId() + " " + konsultation.getHeadVersion() + " vom " + konsultation.getDatum());
+				if (patient.getId().equals(selectedPatient.getId())) {
+					setPatient(patient);
+					updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
+				}
+			}
+
+			// Konsulation gehoert nicht zu diesem Patienten, Fall
+			// untersuchen
+			fall = (Fall) ElexisEventDispatcher.getSelected(Fall.class);
+			if (fall != null) {
+				patient = fall.getPatient();
+				if (!patient.getId().equals(selectedPatient.getId())) {
+					// aktuellste Konsultation dieses Falls waehlen
+					konsultation = Helpers.getTodaysLatestKons(fall);
+					logEvent(
+						"displaySelectedPatient kons Konsulation gehoert nicht zu diesem Patienten "
+							+ patient.getPersonalia());
+					setPatient(patient);
+					updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
+					return;
+				} else {
+					logEvent("displaySelectedPatient Konsulation gehoert zu diesem Patienten " + konsultation.getId() + " " + konsultation.getHeadVersion() + " vom " + konsultation.getDatum() + " " + patient.getPersonalia());
+					updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
+				}
+			}
+
+			// weder aktuell ausgewaehlte Konsulation noch aktuell
+			// ausgewaehlter Fall gehoeren zu diesem Patienten
+			setPatient(selectedPatient);
+
+			// lezte Kons setzen, falls heutiges Datum
+			Konsultation letzteKons = Helpers.getTodaysLatestKons(selectedPatient);
+			if (letzteKons != null) {
+				TimeTool letzteKonsDate = new TimeTool(letzteKons.getDatum());
+				TimeTool today = new TimeTool();
+				if (!letzteKonsDate.isSameDay(today)) {
+					letzteKons = null;
+				}
+				logEvent("displaySelectedPatient letzte Kons setzen"
+					+ selectedPatient.getPersonalia());
+				updateAllKonsAreas(letzteKons, KonsActions.ACTIVATE_KONS);
+			} else {
+				// When no consultation is selected we must create one (maybe a case, too)
+				// This allows one to start working, as soon as possible
+				if (fall == null) {
+					Fall[] faelle = selectedPatient.getFaelle();
+					if (faelle.length == 0) {
+						actKons = selectedPatient.createFallUndKons();
+						logEvent(
+							"displaySelectedPatient create FallUndKons as none selected"
+								+ selectedPatient.getPersonalia());
+					} else {
+						actKons = faelle[0].getLetzteBehandlung();
+						if (actKons == null) {
+							actKons = faelle[0].neueKonsultation();
+							logEvent(
+								"displaySelectedPatient create kons for faelle[0]"
+									+ selectedPatient.getPersonalia());
+						} else {
+							TimeTool letzteKonsDate = new TimeTool(actKons.getDatum());
+							if (letzteKonsDate.isSameDay(new TimeTool())) {
+								logEvent(
+									"displaySelectedPatient found kons of today for for faelle[0] "
+										+ selectedPatient.getPersonalia() + " von "
+										+ actKons.getDatum());
+							} else {
+								logEvent(
+									"displaySelectedPatient found kons for for faelle[0] "
+										+ selectedPatient.getPersonalia()
+										+ " ist nicht von heute " + actKons.getDatum());
+								actKons = faelle[0].neueKonsultation();
+								ElexisEventDispatcher.fireSelectionEvent(actKons);
+							}
+						}
+					}
+				} else {
+					logEvent("displaySelectedPatient create kons for fall"
+						+ selectedPatient.getPersonalia());
+					actKons = fall.neueKonsultation();
+					ElexisEventDispatcher.fireSelectionEvent(actKons);
+				}
+				updateAllKonsAreas(actKons, KonsActions.ACTIVATE_KONS);
+			}
+		}
 	private final ElexisUiEventListenerImpl eeli_pat =
 		new ElexisUiEventListenerImpl(Patient.class, ElexisEvent.EVENT_SELECTED) {
 
 			@Override
 			public void runInUi(ElexisEvent ev){
 				if (ev.getType() == ElexisEvent.EVENT_SELECTED) {
-					Patient selectedPatient = (Patient) ev.getObject();
-					boolean patient_already_active =
-						actPatient != null && selectedPatient.getId().equals(actPatient.getId());
-					logEvent("eeli_pat EVENT_SELECTED " + selectedPatient.getId()
-						+ " patient_already_active " + patient_already_active
-						+ selectedPatient.getPersonalia());
-
-					showAllChargesAction.setChecked(false);
-					showAllConsultationsAction.setChecked(false);
-					if (!patient_already_active) {
-						setPatient(selectedPatient);
-						updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
-					}
-
-					Patient patient = null;
-					Fall fall = null;
-					Konsultation konsultation = null;
-
-					konsultation =
-						(Konsultation) ElexisEventDispatcher.getSelected(Konsultation.class);
-					if (konsultation != null) {
-						// diese Konsulation setzen, falls sie zum ausgewaehlten Patienten gehoert
-						fall = konsultation.getFall();
-						patient = fall.getPatient();
-						logEvent("runInUi eeli_pat EVENT_SELECTED kons " + konsultation.getId() + " " + konsultation.getHeadVersion() + " vom " + konsultation.getDatum());
-						if (patient.getId().equals(selectedPatient.getId())) {
-							setPatient(patient);
-							updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
-						}
-					}
-
-					// Konsulation gehoert nicht zu diesem Patienten, Fall
-					// untersuchen
-					fall = (Fall) ElexisEventDispatcher.getSelected(Fall.class);
-					if (fall != null) {
-						patient = fall.getPatient();
-						if (!patient.getId().equals(selectedPatient.getId())) {
-							// aktuellste Konsultation dieses Falls waehlen
-							konsultation = Helpers.getTodaysLatestKons(fall);
-							logEvent(
-								"runInUi eeli_pat EVENT_SELECTED kons Konsulation gehoert nicht zu diesem Patienten "
-									+ patient.getPersonalia());
-							setPatient(patient);
-							updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
-							return;
-						} else {
-							logEvent("runInUi eeli_pat EVENT_SELECTED Konsulation gehoert zu diesem Patienten " + konsultation.getId() + " " + konsultation.getHeadVersion() + " vom " + konsultation.getDatum() + " " + patient.getPersonalia());
-							updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
-						}
-					}
-
-					// weder aktuell ausgewaehlte Konsulation noch aktuell
-					// ausgewaehlter Fall gehoeren zu diesem Patienten
-					setPatient(selectedPatient);
-
-					// lezte Kons setzen, falls heutiges Datum
-					Konsultation letzteKons = Helpers.getTodaysLatestKons(selectedPatient);
-					if (letzteKons != null) {
-						TimeTool letzteKonsDate = new TimeTool(letzteKons.getDatum());
-						TimeTool today = new TimeTool();
-						if (!letzteKonsDate.isSameDay(today)) {
-							letzteKons = null;
-						}
-						logEvent("runInUi eeli_pat EVENT_SELECTED letzte Kons setzen"
-							+ selectedPatient.getPersonalia());
-						updateAllKonsAreas(letzteKons, KonsActions.ACTIVATE_KONS);
-					} else {
-						// When no consultation is selected we must create one (maybe a case, too)
-						// This allows one to start working, as soon as possible
-						if (fall == null) {
-							Fall[] faelle = selectedPatient.getFaelle();
-							if (faelle.length == 0) {
-								actKons = selectedPatient.createFallUndKons();
-								logEvent(
-									"runInUi eeli_pat EVENT_SELECTED create FallUndKons as none selected"
-										+ selectedPatient.getPersonalia());
-							} else {
-								actKons = faelle[0].getLetzteBehandlung();
-								if (actKons == null) {
-									actKons = faelle[0].neueKonsultation();
-									logEvent(
-										"runInUi eeli_pat EVENT_SELECTED create kons for faelle[0]"
-											+ selectedPatient.getPersonalia());
-								} else {
-									TimeTool letzteKonsDate = new TimeTool(actKons.getDatum());
-									if (letzteKonsDate.isSameDay(new TimeTool())) {
-										logEvent(
-											"runInUi eeli_pat EVENT_SELECTED found kons of today for for faelle[0] "
-												+ selectedPatient.getPersonalia() + " von "
-												+ actKons.getDatum());
-									} else {
-										logEvent(
-											"runInUi eeli_pat EVENT_SELECTED found kons for for faelle[0] "
-												+ selectedPatient.getPersonalia()
-												+ " ist nicht von heute " + actKons.getDatum());
-										actKons = faelle[0].neueKonsultation();
-										ElexisEventDispatcher.fireSelectionEvent(actKons);
-									}
-								}
-							}
-						} else {
-							logEvent("runInUi eeli_pat EVENT_SELECTED create kons for fall"
-								+ selectedPatient.getPersonalia());
-							actKons = fall.neueKonsultation();
-							ElexisEventDispatcher.fireSelectionEvent(actKons);
-						}
-						updateAllKonsAreas(actKons, KonsActions.ACTIVATE_KONS);
-					}
+					displaySelectedPatient((Patient) ev.getObject(), "eeli_pat");
 
 				} else if (ev.getType() == ElexisEvent.EVENT_DESELECTED) {
 					logEvent("runInUi eeli_pat EVENT_DESELECTED");
@@ -744,30 +758,10 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 	@Override
 	public void visible(boolean mode){
 		if (mode == true) {
-			showAllChargesAction.setChecked(false);
-			showAllConsultationsAction.setChecked(false);
-
 			ElexisEventDispatcher.getInstance().addListeners(eeli_kons_filter, eeli_kons,
 				eeli_problem, eeli_fall, eeli_pat, eeli_user);
 
-			Patient patient = ElexisEventDispatcher.getSelectedPatient();
-			setPatient(patient);
-
-			/*
-			 * setPatient(Patient) setzt eine neue Konsultation, falls bereits eine gestzt ist und
-			 * diese nicht zum neuen Patienten gehoert. Ansonsten sollten wir die letzte
-			 * Konsultation des Paitenten setzten.
-			 */
-			if (actKons == null) {
-				Konsultation kons =
-					(Konsultation) ElexisEventDispatcher.getSelected(Konsultation.class);
-				if (kons != null) {
-					if (!kons.getFall().getPatient().equals(patient) && patient != null) {
-						kons = patient.getLetzteKons(false);
-					}
-				}
-				updateAllKonsAreas(kons, KonsActions.ACTIVATE_KONS);
-			}
+			displaySelectedPatient(ElexisEventDispatcher.getSelectedPatient(), "view visible");
 			heartbeat.enableListener(true);
 		} else {
 			heartbeat.enableListener(false);
