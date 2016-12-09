@@ -103,12 +103,14 @@ public class KgIatrixPerspective implements IPerspectiveFactory {
 		main.addView("org.iatrix.messwerte.v2.views.MesswerteView"); // Messwerte Iatrix v2
 		main.addView(LaborView.ID); // Labor
 		main.addView("ch.elexis.agenda.parallelview"); // Parallelanzeige
-		main.addPlaceholder("ch.elexis.agenda.largeview"); // Agenda Praxis AgendaGross.ID is not exported!
+		// main.addView(AgendaGross.ID);
+		main.addView("ch.elexis.agenda.largeview");
+		// main.addPlaceholder("ch.elexis.agenda.largeview"); // Agenda Praxis AgendaGross.ID is not exported!
 
 		main.addPlaceholder(ScriptView.ID); // Script, falls vorhanden
 		// Interaktionen. Welche View ID??
 		main.addPlaceholder(FallDetailView.ID);
-		main.addPlaceholder(TextView.ID);
+		// main.addPlaceholder(TextView.ID); no in right bottom
 		main.addPlaceholder(KompendiumView.ID);
 
 
@@ -130,12 +132,14 @@ public class KgIatrixPerspective implements IPerspectiveFactory {
 		rightbottom.addView(BriefAuswahl.ID);
 		rightbottom.addView(TextView.ID); // ch.elexis.TextView"
 		rightbottom.addView(FallListeView.ID); // Fälle und kons
-		rightbottom.addView(FallDetailView.ID);
+		// rightbottom.addView(FallDetailView.ID);
 		rightbottom.addView(MedicationView.PART_ID);
 
 		/**
 		 * Ganz unten kommt der Balken mit den Knöpfen
 		 *   "Show View as Fast View"
+		 * Es können keine hinzugefügt werden, welche oben schon
+		 * an einen Folder gebunden sind.
 		 */
 		layout.addFastView(LeistungenView.ID, 0.5f);
 		layout.addFastView(DiagnosenView.ID, 0.5f);
@@ -143,10 +147,10 @@ public class KgIatrixPerspective implements IPerspectiveFactory {
 		layout.addFastView(AccountView.ID);
 		layout.addFastView(BillSummary.ID);
 		layout.addFastView(PatientDetailView2.ID);
-		layout.addFastView(RechnungsListeView.ID);
+		// layout.addFastView(RechnungsListeView.ID);
 		layout.addFastView(KontaktDetailView.ID);
 		layout.addFastView(RezeptBlatt.ID);
-		layout.addFastView(RezepteView.ID);
+		// layout.addFastView(RezepteView.ID);
 
 		/**
 		 * Add some shortcuts for Iatrix-Views
