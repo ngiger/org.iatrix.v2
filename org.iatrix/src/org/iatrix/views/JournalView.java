@@ -490,26 +490,28 @@ public class JournalView extends ViewPart implements IActivationListener, ISavea
 				if (patient.getId().equals(selectedPatient.getId())) {
 					setPatient(patient);
 					updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
-				}
-			}
-
-			// Konsulation gehoert nicht zu diesem Patienten, Fall
-			// untersuchen
-			fall = (Fall) ElexisEventDispatcher.getSelected(Fall.class);
-			if (fall != null) {
-				patient = fall.getPatient();
-				if (!patient.getId().equals(selectedPatient.getId())) {
-					// aktuellste Konsultation dieses Falls waehlen
-					konsultation = Helpers.getTodaysLatestKons(fall);
-					logEvent(
-						"displaySelectedPatient kons Konsulation gehoert nicht zu diesem Patienten "
-							+ patient.getPersonalia());
-					setPatient(patient);
-					updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
-					return;
 				} else {
-					logEvent("displaySelectedPatient Konsulation gehoert zu diesem Patienten " + konsultation.getId() + " " + konsultation.getHeadVersion() + " vom " + konsultation.getDatum() + " " + patient.getPersonalia());
-					updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
+					// Konsulation gehoert nicht zu diesem Patienten, Fall
+					// untersuchen
+					fall = (Fall) ElexisEventDispatcher.getSelected(Fall.class);
+					if (fall != null) {
+						patient = fall.getPatient();
+						if (!patient.getId().equals(selectedPatient.getId())) {
+							// aktuellste Konsultation dieses Falls waehlen
+							konsultation = Helpers.getTodaysLatestKons(fall);
+							logEvent(
+								"displaySelectedPatient kons Konsulation gehoert nicht zu diesem Patienten "
+									+ patient.getPersonalia());
+							setPatient(patient);
+							updateAllKonsAreas(null, KonsActions.ACTIVATE_KONS);
+							return;
+						} else {
+							logEvent("displaySelectedPatient Konsulation gehoert zu diesem Patienten "
+								+ konsultation.getId() + " " + konsultation.getHeadVersion() + " vom "
+									+ konsultation.getDatum() + " " + patient.getPersonalia());
+							updateAllKonsAreas(konsultation, KonsActions.ACTIVATE_KONS);
+						}
+					}
 				}
 			}
 
