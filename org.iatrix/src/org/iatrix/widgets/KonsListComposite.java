@@ -162,31 +162,40 @@ public class KonsListComposite {
 	public void setKonsultationen(List<KonsData> konsultationen, Konsultation actKons){
 		this.konsultationen = konsultationen;
 		this.actKons = actKons;
-		refresh(actKons);
+		refreshAllKons(actKons);
+	}
+
+	private void setLinkEnabled(String caller, WidgetRow  row, Konsultation actKons) {
+		String msg = "";
+		Konsultation row_kons = null;
+		if (actKons != null) {
+			msg = "act: " + actKons.getId() + " " + actKons.getDatum();
+		}
+		if (row.konsData != null &&	row.konsData.konsultation != null) {
+			row_kons = row.konsData.konsultation;
+			msg +=  " row " + row_kons.getId() + " " + row_kons.getDatum();
+		}
+		if (actKons != null && row != null && row_kons != null) {
+			boolean enabled = !row_kons.getId().equals(actKons.getId());
+			log.debug(caller + ": hTitle for " + row.hTitle.getText() + " from "
+					+ msg  + " enabled? " + enabled);
+			row.hTitle.setEnabled(enabled);
+		} else {
+			boolean enabled = row != null && row.hTitle != null;
+			row.hTitle.setEnabled(enabled);
+			log.debug(caller + ": " + msg + " enabled " + enabled);
+		}
 	}
 
 	public void refeshHyperLinks(Konsultation actKons){
 		this.actKons = actKons;
-		log.debug("refeshHyperLinks actKons " + actKons);
 		for (WidgetRow row : widgetRows) {
-			if (actKons != null && row != null && row.konsData != null &&
-					row.konsData.konsultation != null) {
-				boolean enabled = row.konsData.konsultation.getId().equals(actKons.getId());
-				log.debug("hTitle for " + row.hTitle.getText() + " from "
-						+ row.konsData.konsultation.getDatum() + " konsData "
-						+ actKons.getId() + row.konsData.konsultation.getId()
-						+ " enabled? " + enabled);
-				row.hTitle.setEnabled(enabled);
-			} else {
-				if (row != null && row.hTitle != null ) {
-					row.hTitle.setEnabled(true);
-				}
-			}
+			setLinkEnabled("refeshHyperLinks", row, actKons);
 		}
 	}
 
 	// refresh layout and all elements
-	private void refresh(Konsultation kons){
+	private void refreshAllKons(Konsultation kons){
 		// clear all widget rows
 		for (WidgetRow row : widgetRows) {
 			row.setKonsData(null);
@@ -210,18 +219,8 @@ public class KonsListComposite {
 				row.etf.setData("TEST_COMP_NAME", "KG_Iatrix_klc_row_"+j + "_text"); // for Jubula
 				row.verrechnung.setData("TEST_COMP_NAME", "KG_Iatrix_klc_row_"+j + "_verrechnung"); // for Jubula
 				row.problems.setData("TEST_COMP_NAME", "KG_Iatrix_klc_row_"+j + "_problems"); // for Jubula
-				if (kons != null && konsData != null && konsData.konsultation != null) {
-					boolean enabled = ! konsData.konsultation.getId().contentEquals(kons.getId());
-					log.debug("hTitle2 for row " + j + ": " + row.hTitle.getText() + " from "
-							+ konsData.konsultation.getDatum() + " actKons " +
-							kons.getId() +" konsData " +
-									konsData.konsultation.getId() + " enabled " + enabled);
-					row.hTitle.setEnabled(enabled);
-				} else {
-					log.debug("hTitle not set for " + kons + " konsData" + konsData);
-				}
-
 				row.setKonsData(konsData);
+				setLinkEnabled("refreshAllKons", row, actKons);
 			}
 
 			loadingLabel.setVisible(false);
