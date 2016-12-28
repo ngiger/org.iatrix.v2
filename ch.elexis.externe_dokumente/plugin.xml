@@ -12,13 +12,13 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="ch.elexis.extdoc.commands.rename"
+            commandId="ch.elexis.extdoc.v2.commands.rename"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="F2">
       </key>
       <key
-            commandId="ch.elexis.extdoc.commands.edit_properties"
+            commandId="ch.elexis.extdoc.v2.commands.edit_properties"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="ALT+ENTER">
@@ -28,12 +28,12 @@
          point="org.eclipse.ui.commands">
       <command
             categoryId="ch.elexis.extdoc.commands.category"
-            id="ch.elexis.extdoc.commands.rename"
+            id="ch.elexis.extdoc.v2.commands.rename"
             name="%ch.elexis.extdoc.cmd.rename">
       </command>
       <command
             categoryId="ch.elexis.extdoc.commands.category"
-            id="ch.elexis.extdoc.commands.edit_properties"
+            id="ch.elexis.extdoc.v2.commands.edit_properties"
             name="%extdoc.commands.properties_cmd">
       </command>
       <category

@@ -689,7 +689,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		editAction.setText(Messages.ExterneDokumente_propeties);
 		editAction.setToolTipText(Messages.ExterneDokumente_rename_or_change_date);
-		editAction.setActionDefinitionId("ch.elexis.extdoc.commands.edit_properties");
+		editAction.setActionDefinitionId("ch.elexis.extdoc.v2.commands.edit_properties");
 		editAction.setImageDescriptor(Images.IMG_EDIT.getImageDescriptor());
 		GlobalActions.registerActionHandler(this, editAction);
 
@@ -731,7 +731,7 @@ public class ExterneDokumente extends ViewPart implements IActivationListener {
 		};
 		renameAction.setText(Messages.ExterneDokumente_renaming_file);
 		renameAction.setToolTipText(Messages.ExterneDokumente_renaming_file);
-		renameAction.setActionDefinitionId("ch.elexis.extdoc.commands.rename");
+		renameAction.setActionDefinitionId("ch.elexis.extdoc.v2.commands.rename");
 		GlobalActions.registerActionHandler(this, renameAction);
 
 		verifyAction = new Action() {
