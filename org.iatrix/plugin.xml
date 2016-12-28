@@ -70,20 +70,20 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandid="org.iatrix.v2.commands.newcons"
-            contextid="org.iatrix.v2.view.context"
+            commandId="org.iatrix.v2.commands.newcons"
+            contextId="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+K">
       </key>
       <key
-            commandid="org.iatrix.v2.commands.export_clipboard"
-            contextid="org.iatrix.v2.view.context"
+            commandId="org.iatrix.v2.commands.export_clipboard"
+            contextId="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+E">
       </key>
       <key
-            commandid="org.iatrix.v2.commands.newproblem"
-            contextid="org.iatrix.v2.view.context"
+            commandId="org.iatrix.v2.commands.newproblem"
+            contextId="org.iatrix.v2.view.context"
             schemeId="ch.elexis.ui.keybindingScheme"
             sequence="M1+P">
       </key>
